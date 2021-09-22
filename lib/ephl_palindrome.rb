@@ -2,12 +2,11 @@
 
 require_relative "ephl_palindrome/version"
 
-# module EphlPalindrome
 #   class Error < StandardError; end
 #   # Your code goes here...
 # end
 
-class String
+module EphlPalindrome
 
   def palindrome?
     processed_content == processed_content.reverse
@@ -17,7 +16,15 @@ class String
   private
 
   def processed_content
-    scan(/[a-z]/i).join.to_s.downcase
+    to_s.scan(/[a-z]/i).join.downcase
   end
 
+end
+
+class String
+  include EphlPalindrome
+end
+
+class Integer
+  include EphlPalindrome
 end
